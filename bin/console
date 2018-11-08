@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+function __($t) { return $t; }
+
+$container   = require __DIR__ . '/../config/container.php';
+$application = new Application('Application console');
+
+$commands = $container->get('config')['console']['commands'];
+foreach ($commands as $command) {
+    $application->add($container->get($command));
+}
+
+$application->run();
