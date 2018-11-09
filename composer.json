@@ -31,17 +31,14 @@
         }
     },
     "support": {
-        "issues": "https://github.com/zendframework/zend-expressive-skeleton/issues",
-        "source": "https://github.com/zendframework/zend-expressive-skeleton",
-        "rss": "https://github.com/zendframework/zend-expressive-skeleton/releases.atom",
-        "slack": "https://zendframework-slack.herokuapp.com",
-        "forum": "https://discourse.zendframework.com/c/questions/expressive"
+        "issues": "https://github.com/hkulekci/zend-expressive-skeleton/issues",
+        "source": "https://github.com/hkulekci/zend-expressive-skeleton",
+        "rss": "https://github.com/hkulekci/zend-expressive-skeleton/releases.atom"
     },
     "require": {
         "php": "^7.1",
-        "doctrine/doctrine-module": "^1.2.0",
-        "doctrine/orm": "^2.6",
-        "roave/security-advisories": "dev-master",
+        "doctrine/orm": "2.7.x-dev",
+        "doctrine/doctrine-module": "^2.1.0",
         "zendframework/zend-component-installer": "^2.1.1",
         "zendframework/zend-config-aggregator": "^1.0",
         "zendframework/zend-diactoros": "^1.7.1",
@@ -58,6 +55,7 @@
         "zendframework/zend-stdlib": "^3.1"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-master",
         "phpunit/phpunit": "^7.0.1",
         "squizlabs/php_codesniffer": "^2.9.1",
         "zendframework/zend-expressive-tooling": "^1.0",

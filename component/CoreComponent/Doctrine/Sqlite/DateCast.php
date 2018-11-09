@@ -1,5 +1,5 @@
 <?php
-namespace CoreComponent\Doctrine\MySql;
+namespace CoreComponent\Doctrine\Sqlite;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
@@ -27,8 +27,7 @@ class DateCast extends FunctionNode
     public function getSql(SqlWalker $sqlWalker): string
     {
         $secondPart = $this->secondDateExpression->dispatch($sqlWalker);
-        $secondPart = str_replace(['YYYY', 'MM', 'DD'], ['%Y', '%m', '%d'], $secondPart);
 
-        return 'DATE_FORMAT('.$this->firstDateExpression->dispatch($sqlWalker).', '.$secondPart.')';
+        return 'datetime('.$this->firstDateExpression->dispatch($sqlWalker).', '.$secondPart.')';
     }
 }

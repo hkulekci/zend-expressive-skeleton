@@ -7,15 +7,19 @@
  */
 namespace CoreComponent\Doctrine;
 
+
 use CoreComponent\Doctrine\MySql\DateCast as MySqlDateCast;
 use CoreComponent\Doctrine\MySql\IntCast as MySqlIntCast;
 use CoreComponent\Doctrine\PgSql\DateCast as PgSqlDateCast;
 use CoreComponent\Doctrine\PgSql\IntCast as PgSqlIntast;
+use CoreComponent\Doctrine\Sqlite\DateCast as SqliteDateCast;
+use CoreComponent\Doctrine\Sqlite\IntCast as SqliteIntast;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Cache\Cache;
 use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
 use Doctrine\DBAL\Driver\PDOPgSql\Driver as PDOPgSqlDriver;
+use Doctrine\DBAL\Driver\PDOSqlite\Driver as PDOSqliteSqlDriver;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
@@ -82,6 +86,18 @@ class DoctrineFactory implements AbstractFactoryInterface
         $doctrine->setMetadataCacheImpl($cache);
 
         $doctrineConfig = $config['doctrine']['connection'][$requestedName];
+
+
+        if ($doctrineConfig['driverClass'] === PDOPgSqlDriver::class) {
+            $doctrine->addCustomDatetimeFunction('datecast', PgSqlDateCast::class);
+            $doctrine->addCustomNumericFunction('INT', PgSqlIntast::class);
+        } elseif ($doctrineConfig['driverClass'] === PDOMySqlDriver::class) {
+            $doctrine->addCustomDatetimeFunction('datecast', MySqlDateCast::class);
+            $doctrine->addCustomNumericFunction('INT', MySqlIntCast::class);
+        } elseif ($doctrineConfig['driverClass'] === PDOSqliteSqlDriver::class) {
+            $doctrine->addCustomDatetimeFunction('datecast', SqliteDateCast::class);
+            $doctrine->addCustomNumericFunction('INT', SqliteIntast::class);
+        }
 
         if ($doctrineConfig['driverClass'] === PDOPgSqlDriver::class) {
             $doctrine->addCustomDatetimeFunction('datecast', PgSqlDateCast::class);
