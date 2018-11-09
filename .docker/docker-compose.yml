@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./../:/var/www/html
+      - ./nginx/sites/site.conf:/etc/nginx/conf.d/site.conf
+    links:
+      - php
+
+  php:
+    build:
+      context: ./php
+    volumes:
+      - ./../:/var/www/html
+    links:
+      - mysql
+
+  mysql:
+    env_file:
+      - .env
+    build:
+      context: ./mysql
+    volumes:
+      - "~/mysql/:/var/lib/mysql/"
+    ports:
+      - "3306:3306"
+    restart: always

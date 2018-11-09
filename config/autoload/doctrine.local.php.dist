@@ -9,23 +9,35 @@ return [
             'underscore_naming_strategy'  => true,
         ],
         'connection' => [
-            // default connection
+            // SQLite
+            // 'orm_default' => [
+            //     'driver'   => 'pdo_sqlite',
+            //     'path'     => 'data/db/data.db',
+            //     'user'     => 'test',
+            //     'charset'  => 'UTF8',
+            // ],
+            // Mysql
             'orm_default' => [
-                'driver'   => 'pdo_sqlite',
-                'path'     => 'data/db/data.db',
-                'user'     => 'test',
-                'charset'  => 'UTF8',
+                'driverClass' => \Doctrine\DBAL\Driver\PDOMySql\Driver::class,
+                'dbname' => 'zend-expressive',
+                'user' => 'root',
+                'password' => 'root',
+                'host' => 'mysql',
+                'driverOptions' => [
+                    1002 => 'SET NAMES utf8',
+                ],
             ],
         ],
         // Use array cache locally, also auto generate proxies on local.
-        'configuration' => array(
-            'orm_default' => array(
+        'configuration' => [
+            'orm_default' => [
+                //TODO: update configuration factory to implement these lines.
                 'metadata_cache'   => 'array',
                 'query_cache'      => 'array',
                 'result_cache'     => 'array',
                 'hydration_cache'  => 'array',
-            ),
-        ),
+            ],
+        ],
         'annotation' => [
             'metadata' => [
             ],
