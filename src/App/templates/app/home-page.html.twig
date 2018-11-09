@@ -3,5 +3,21 @@
 {% block title %}Homepage{% endblock %}
 
 {% block content %}
-    Home page content
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th colspan="2"><p align="center">Application Settings</p></th>
+        </tr>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        {% for setting in settings %}
+        <tr>
+            <td>{{ setting['key'] }}</td>
+            <td>{{ setting['value'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="uygulama_ayarlari")
+ * @ORM\Table(name="application_settings")
  */
 class ApplicationSetting extends Base
 {
@@ -25,13 +25,13 @@ class ApplicationSetting extends Base
     protected $id;
 
     /**
-     * @ORM\Column(name="anahtar", type="string", length=100, unique=true)
+     * @ORM\Column(name="key", type="string", length=100, unique=true)
      * @var string $key
      */
     protected $key;
 
     /**
-     * @ORM\Column(name="deger", type="string", length=100, nullable=true)
+     * @ORM\Column(name="value", type="string", length=100, nullable=true)
      * @var string $value
      */
     protected $value;

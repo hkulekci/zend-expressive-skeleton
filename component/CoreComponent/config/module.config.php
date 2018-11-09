@@ -1,10 +1,12 @@
 <?php
 return [
     'dependencies' => [
+        'abstract_factories' => [
+            \CoreComponent\Doctrine\DoctrineFactory::class,
+        ],
         'factories' => [
             Doctrine\Common\Cache\Cache::class    => \CoreComponent\Doctrine\DoctrineFileCacheFactory::class,
             Doctrine\Common\Cache\Cache::class    => \CoreComponent\Doctrine\DoctrineArrayCacheFactory::class,
-            Doctrine\ORM\EntityManager::class     => \CoreComponent\Doctrine\DoctrineFactory::class,
             CoreComponent\Service\Logger::class   => \CoreComponent\Service\LoggerFactory::class,
         ],
         'initializers' => [

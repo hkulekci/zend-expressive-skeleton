@@ -67,7 +67,7 @@
         "psr-4": {
             "App\\": "src/App/src/",
             "CoreComponent\\": "component/CoreComponent/",
-            "InputFilter\\": "src/InputFilter/src/"
+            "InputFilter\\": "component/InputFilter/src/"
         }
     },
     "autoload-dev": {

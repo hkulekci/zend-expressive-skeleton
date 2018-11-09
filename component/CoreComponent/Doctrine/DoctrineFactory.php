@@ -21,10 +21,35 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
 use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 
-class DoctrineFactory
+class DoctrineFactory implements AbstractFactoryInterface
 {
-    public function __invoke(ContainerInterface $container)
+    /**
+     * Can the factory create an instance for the service?
+     *
+     * @param  ContainerInterface $container
+     * @param  string $requestedName
+     * @return bool
+     */
+    public function canCreate(ContainerInterface $container, $requestedName)
+    {
+        $config   = $container->has('config') ? $container->get('config') : [];
+
+        return isset($config['doctrine']['connection'][$requestedName]);
+    }
+
+    /**
+     * Create an object
+     *
+     * @param  ContainerInterface $container
+     * @param  string $requestedName
+     * @param  null|array $options
+     * @return object
+     * @throws \Doctrine\Common\Annotations\AnnotationException
+     * @throws \Doctrine\ORM\ORMException
+     */
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $config   = $container->has('config') ? $container->get('config') : [];
         $proxyDir = $config['doctrine']['orm']['proxy_dir'] ?? 'data/cache/EntityProxy';
@@ -56,7 +81,7 @@ class DoctrineFactory
         $doctrine->setResultCacheImpl($cache);
         $doctrine->setMetadataCacheImpl($cache);
 
-        $doctrineConfig = $config['doctrine']['connection']['orm_default'];
+        $doctrineConfig = $config['doctrine']['connection'][$requestedName];
 
         if ($doctrineConfig['driverClass'] === PDOPgSqlDriver::class) {
             $doctrine->addCustomDatetimeFunction('datecast', PgSqlDateCast::class);

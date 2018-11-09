@@ -9,6 +9,6 @@ $container = require 'config/container.php';
 $container->setFactory(\Doctrine\Common\Cache\Cache::class, \CoreComponent\Doctrine\DoctrineArrayCacheFactory::class);
 // to handle cache problems
 /** @var \Doctrine\ORM\EntityManager $em */
-$em = $container->get(EntityManager::class);
+$em = $container->get('orm_default');
 
 return ConsoleRunner::createHelperSet($em);

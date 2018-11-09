@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Handler;
 
+use Doctrine\ORM\EntityRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -13,9 +14,14 @@ use Zend\Expressive\Template;
 class HomePageHandler implements RequestHandlerInterface
 {
     private $template;
+    private $repository;
 
-    public function __construct(Template\TemplateRendererInterface $template) {
+    public function __construct(
+        Template\TemplateRendererInterface $template,
+        EntityRepository $repository
+    ) {
         $this->template = $template;
+        $this->repository = $repository;
     }
 
     /**
@@ -25,6 +31,14 @@ class HomePageHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        return new HtmlResponse($this->template->render('app/home-page', []));
+        $data = [
+            'settings' => array_map(
+                function($element) {
+                    return $element->toArray();
+                },
+                $this->repository->findAll()
+            ),
+        ];
+        return new HtmlResponse($this->template->render('app/home-page', $data));
     }
 }

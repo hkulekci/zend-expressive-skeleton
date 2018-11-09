@@ -455,13 +455,13 @@ trait InputFilterHelperTrait
                 'name'    => CreditCard::class,
                 'options' => [
                     'messages' => [
-                        CreditCard::CHECKSUM       => "The input seems to contain an invalid checksum",
-                        CreditCard::CONTENT        => "The input must contain only digits",
-                        CreditCard::INVALID        => "Invalid type given. String expected",
-                        CreditCard::LENGTH         => "The input contains an invalid amount of digits",
-                        CreditCard::PREFIX         => "The input is not from an allowed institute",
-                        CreditCard::SERVICE        => "The input seems to be an invalid credit card number",
-                        CreditCard::SERVICEFAILURE => "An exception has been raised while validating the input",
+                        CreditCard::CHECKSUM       => 'The input seems to contain an invalid checksum',
+                        CreditCard::CONTENT        => 'The input must contain only digits',
+                        CreditCard::INVALID        => 'Invalid type given. String expected',
+                        CreditCard::LENGTH         => 'The input contains an invalid amount of digits',
+                        CreditCard::PREFIX         => 'The input is not from an allowed institute',
+                        CreditCard::SERVICE        => 'The input seems to be an invalid credit card number',
+                        CreditCard::SERVICEFAILURE => 'An exception has been raised while validating the input',
                     ]
                 ]
             ]
@@ -527,17 +527,17 @@ trait InputFilterHelperTrait
                 [
                     'name'    => EmailAddress::class,
                     'options' => [
-                        'messages' => [
-                            EmailAddress::INVALID            => "Invalid type given. String expected",
-                            EmailAddress::INVALID_FORMAT     => "The input is not a valid email address. Use the basic format local-part@hostname",
+                        'messages' => array(
+                            EmailAddress::INVALID            => 'Invalid type given. String expected',
+                            EmailAddress::INVALID_FORMAT     => 'The input is not a valid email address. Use the basic format local-part@hostname',
                             EmailAddress::INVALID_HOSTNAME   => "'%hostname%' is not a valid hostname for the email address",
                             EmailAddress::INVALID_MX_RECORD  => "'%hostname%' does not appear to have any valid MX or A records for the email address",
                             EmailAddress::INVALID_SEGMENT    => "'%hostname%' is not in a routable network segment. The email address should not be resolved from public network",
                             EmailAddress::DOT_ATOM           => "'%localPart%' can not be matched against dot-atom format",
                             EmailAddress::QUOTED_STRING      => "'%localPart%' can not be matched against quoted-string format",
                             EmailAddress::INVALID_LOCAL_PART => "'%localPart%' is not a valid local part for the email address",
-                            EmailAddress::LENGTH_EXCEEDED    => "The input exceeds the allowed length",
-                        ]
+                            EmailAddress::LENGTH_EXCEEDED    => 'The input exceeds the allowed length',
+                        )
                     ]
                 ],
             ],
