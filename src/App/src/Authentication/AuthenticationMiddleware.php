@@ -15,7 +15,8 @@ use Zend\Expressive\Template\TemplateRendererInterface;
 
 class AuthenticationMiddleware implements MiddlewareInterface
 {
-    public const AUTH_SESSION_KEY = 'mmo_board_login';
+    public const AUTH_SESSION_KEY = 'auth_session_key';
+
     private $template;
 
     public function __construct(TemplateRendererInterface $template)
