@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f36e2e193144e1dab69e2ed420386d9a",
+    "content-hash": "ea8673d19df3f419abb7d6443ba96590",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -818,12 +818,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "01cff97edae8d7d80cc8fb3ac6804cdb7cf9a4d5"
+                "reference": "62fb493e5f394caa07e0eb255a60205a1a27f4b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/01cff97edae8d7d80cc8fb3ac6804cdb7cf9a4d5",
-                "reference": "01cff97edae8d7d80cc8fb3ac6804cdb7cf9a4d5",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/62fb493e5f394caa07e0eb255a60205a1a27f4b9",
+                "reference": "62fb493e5f394caa07e0eb255a60205a1a27f4b9",
                 "shasum": ""
             },
             "require": {
@@ -892,7 +892,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2018-09-23T05:10:33+00:00"
+            "time": "2018-11-11T22:31:23+00:00"
         },
         {
             "name": "doctrine/persistence",
@@ -1096,6 +1096,44 @@
                 "response"
             ],
             "time": "2017-02-09T16:10:21+00:00"
+        },
+        {
+            "name": "hkulekci/doctrine-component",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hkulekci/zend-expressive-doctrine-component.git",
+                "reference": "768809c7f0cb9fcde587e423074104f2bcda36f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hkulekci/zend-expressive-doctrine-component/zipball/768809c7f0cb9fcde587e423074104f2bcda36f5",
+                "reference": "768809c7f0cb9fcde587e423074104f2bcda36f5",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-module": "^2.1.0",
+                "doctrine/orm": "2.7.x-dev",
+                "php": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DoctrineComponent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Haydar KULEKCI",
+                    "email": "haydarkulekci@gmail.com"
+                }
+            ],
+            "description": "Doctrine COmponent For Zend Expressive Application",
+            "time": "2018-11-12T14:48:56+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -5893,6 +5931,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/orm": 20,
+        "hkulekci/doctrine-component": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

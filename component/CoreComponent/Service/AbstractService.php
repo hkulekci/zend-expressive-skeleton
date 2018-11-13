@@ -7,8 +7,8 @@
  */
 namespace CoreComponent\Service;
 
-use CoreComponent\Doctrine\ObjectManagerAware;
-use CoreComponent\Doctrine\ObjectManagerAwareTrait;
+use DoctrineComponent\Doctrine\ObjectManagerAware;
+use DoctrineComponent\Doctrine\ObjectManagerAwareTrait;
 use Zend\Log\LoggerAwareInterface;
 use Zend\Log\LoggerAwareTrait;
 
