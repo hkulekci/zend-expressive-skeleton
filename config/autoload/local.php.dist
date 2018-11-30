@@ -15,4 +15,6 @@ return [
             'cache_file'    => 'data/cache/config/fastroute.cache',
         ],
     ],
+    'cache_dir' => 'data/cache',
+    'debug' => false,
 ];

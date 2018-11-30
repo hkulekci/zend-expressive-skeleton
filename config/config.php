@@ -38,6 +38,7 @@ $aggregator = new ConfigAggregator([
     App\ConfigProvider::class,
     CoreComponent\ModuleConfig::class,
     DoctrineComponent\ModuleConfig::class,
+    TranslationComponent\ModuleConfig::class,
     // Load application config in a pre-defined order in such a way that local settings
     // overwrite global settings. (Loaded as first to last):
     //   - `global.php`

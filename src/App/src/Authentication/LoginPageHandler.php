@@ -43,7 +43,7 @@ class LoginPageHandler implements RequestHandlerInterface
         if ($request->getMethod() === 'POST') {
             $data = $request->getParsedBody();
             if (empty($data['username']) || empty($data['password'])) {
-                $flashMessages->flash('formError', 'Please provide username and password!');
+                $flashMessages->flash('formError', __('Please provide username and password!'));
                 return new RedirectResponse('/login');
             }
             if ($data['username'] === 'admin' && $data['password'] === '123456') {
