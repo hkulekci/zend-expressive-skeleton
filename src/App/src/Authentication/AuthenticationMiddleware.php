@@ -9,6 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response\RedirectResponse;
+use Zend\Expressive\Router\RouteResult;
 use Zend\Expressive\Session\SessionInterface;
 use Zend\Expressive\Session\SessionMiddleware;
 use Zend\Expressive\Template\TemplateRendererInterface;
@@ -32,8 +33,13 @@ class AuthenticationMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        if ($request->getUri()->getPath() === '/login') {
-            return $handler->handle($request);
+        /** @var RouteResult $routeResult */
+        $routeResult = $request->getAttribute(RouteResult::class);
+        if ($routeResult->getMatchedRoute()) {
+            $options = $routeResult->getMatchedRoute()->getOptions();
+            if (isset($options['authorization']) && $options['authorization'] === 'guest') {
+                return $handler->handle($request);
+            }
         }
         /**
          * @var SessionInterface $session
