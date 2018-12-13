@@ -1,16 +1,16 @@
 {% extends '@layout/default.html.twig' %}
 
-{% block title %}Homepage{% endblock %}
+{% block title %}{{ trans('Homepage') }}{% endblock %}
 
 {% block content %}
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th colspan="2"><p align="center">Application Settings</p></th>
+            <th colspan="2"><p align="center">{{ trans('Application Settings') }}</p></th>
         </tr>
         <tr>
-            <th>Key</th>
-            <th>Value</th>
+            <th>{{ trans('Key') }}</th>
+            <th>{{ trans('Value') }}</th>
         </tr>
         </thead>
         {% for setting in settings %}

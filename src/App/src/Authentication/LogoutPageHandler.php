@@ -29,7 +29,7 @@ class LogoutPageHandler implements RequestHandlerInterface
         $session = $request->getAttribute(SessionMiddleware::SESSION_ATTRIBUTE);
         $session->unset(AuthenticationMiddleware::AUTH_SESSION_KEY);
 
-        $flashMessages->flash('formSuccess', 'Logged out!');
+        $flashMessages->flash('formSuccess', __('Logged out!'));
 
         return new RedirectResponse('/login');
     }

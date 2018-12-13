@@ -15,7 +15,7 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <!-- Generated: 2018-04-16 09:29:05 +0200 -->
-    <title>{% block title %}{% endblock %}  - Zend Expressive Web App Skeleton</title>
+    <title>{% block title %}{% endblock %}  - {{ trans('Zend Expressive Web App Skeleton') }}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
     <script src="/assets/js/require.min.js"></script>
@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="d-flex">
                     <a class="header-brand" href="{{ path('home') }}">
-                        Zend Expressive Web App Skeleton
+                        {{ trans('Zend Expressive Web App Skeleton') }}
                     </a>
                     <div class="d-flex order-lg-2 ml-auto">
                         <div class="dropdown">
@@ -57,10 +57,10 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                 <a class="dropdown-item" href="mailto:haydarkulekci@gmail.com">
-                                    <i class="dropdown-icon fe fe-help-circle"></i> Help
+                                    <i class="dropdown-icon fe fe-help-circle"></i> {{ trans('Help') }}
                                 </a>
                                 <a class="dropdown-item" href="/logout">
-                                    <i class="dropdown-icon fe fe-log-out"></i> Logout
+                                    <i class="dropdown-icon fe fe-log-out"></i> {{ trans('Logout') }}
                                 </a>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3 ml-auto">
                         <form class="input-icon my-3 my-lg-0">
-                            <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
+                            <input type="search" class="form-control header-search" placeholder="{{ trans('Search&hellip;')|raw }}" tabindex="1">
                             <div class="input-icon-addon">
                                 <i class="fe fe-search"></i>
                             </div>
@@ -85,7 +85,7 @@
                     <div class="col-lg order-lg-first">
                         <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                             <li class="nav-item">
-                                <a href="{{ path('home') }}" class="nav-link"><i class="fe fe-database"></i> Home</a>
+                                <a href="{{ path('home') }}" class="nav-link"><i class="fe fe-database"></i> {{ trans('Home') }}</a>
                             </li>
                         </ul>
                     </div>
